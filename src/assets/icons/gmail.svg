@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="gmail" transform="translate(20954 14124)">
+    <g id="gmail-2" data-name="gmail" transform="translate(-20947 -14175.953)">
+      <path id="Path_51882" data-name="Path 51882" d="M2.423,177.287H8.077V163.556l-3.7-6.465L0,157.5v17.366a2.423,2.423,0,0,0,2.423,2.423Z" transform="translate(0 -86.673)" fill="#0085f7"/>
+      <path id="Path_51883" data-name="Path 51883" d="M395.636,177.287h5.654a2.423,2.423,0,0,0,2.423-2.423V157.5l-4.369-.407-3.709,6.465v13.731Z" transform="translate(-368.173 -86.673)" fill="#00a94b"/>
+      <path id="Path_51884" data-name="Path 51884" d="M351.11,66.383l-3.321,6.338,3.321,4.163,8.077-6.058V67.594a3.635,3.635,0,0,0-5.816-2.908Z" transform="translate(-323.648 0)" fill="#ffbc00"/>
+      <path id="Path_51885" data-name="Path 51885" d="M73.936,109.456l-3.165-6.685,3.165-3.815,9.693,7.27,9.693-7.27v10.5l-9.693,7.27Z" transform="translate(-65.858 -32.573)" fill="#ff4131" fill-rule="evenodd"/>
+      <path id="Path_51886" data-name="Path 51886" d="M0,67.594v3.231l8.077,6.058v-10.5l-2.262-1.7A3.635,3.635,0,0,0,0,67.594Z" transform="translate(0)" fill="#e51c19"/>
+    </g>
+    <rect id="Rectangle_1801" data-name="Rectangle 1801" width="50" height="50" transform="translate(-20954 -14124)" fill="none"/>
+  </g>
+</svg>

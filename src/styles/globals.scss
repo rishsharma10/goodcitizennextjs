@@ -1,0 +1,749 @@
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "override";
+@import "theme";
+@import "typography";
+@import "nprogress/nprogress.css";
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+@font-face {
+  font-family: 'karlieserifCondensed';
+  src: url('../assets/karlieserif-condensed-maisfontes.0df4/karlieserif-condensed.otf');
+}
+
+html,
+body,
+#__next,
+.ant-layout {
+  height: 100%;
+  background-color: #f4f4f4;
+}
+
+* {
+  font-family: "Lato", serif !important;
+}
+
+.ant-layout-sider {
+  height: 100%;
+  overflow: auto;
+}
+
+p {
+  margin: 0;
+}
+
+#nprogress .bar {
+  background: $primary !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $light-black;
+  width: 6px;
+  border-radius: 40px;
+}
+
+// ------------------------------- New CSS ----------------------------------
+section {
+  padding-block: 80px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $black;
+  font-family: 'karlieserifCondensed' !important;
+  letter-spacing: 1px;
+}
+
+.logo-text {
+  font-family: 'karlieserifCondensed' !important;
+  text-transform: uppercase;
+  margin: 0;
+  color: $black;
+  font-size: 30px;
+  line-height: 38px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 46px;
+}
+
+.title-seperator {
+  margin-block: 12px 20px;
+}
+
+.sub-title {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.text-secondary {
+  color: $secondary !important;
+}
+
+a {
+  color: $black;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+.common-bg {
+  background: url('../assets/brand-guide/42.png') no-repeat;
+  background-position: top;
+  background-size: cover;
+}
+
+.common-bg-2 {
+  background: url('../assets/brand-guide/grey-bg.jpg') center/cover no-repeat;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+
+
+  .ant-carousel .slick-list .slick-slide>div>div,
+  .ant-carousel,
+  .slick-slider,
+  .slick-list,
+  .slick-track {
+    height: 100%;
+  }
+
+  .ant-carousel .slick-list .slick-slide>div>div {
+    height: 100% !important;
+  }
+
+  .ant-carousel .slick-list .slick-slide>div {
+    height: 100%;
+  }
+
+  .hero-image {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      height: 100%;
+      width: 100%;
+      inset: 0;
+      margin: auto;
+      background-color: #00000095;
+      z-index: 1;
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+
+    * {
+      color: $white;
+    }
+
+    h1 {
+      font-size: 50px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width:575px) {
+    height: 74vh;
+
+    .hero-content {
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// ---------------------- Blog Section --------------------
+.blog-section {
+  .blog-card {
+    .blog-image {
+      height: 240px;
+      border-radius: 8px;
+      min-height: 240px;
+
+      img {
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+.fixed-banner-section {
+  background: linear-gradient(#000000ae, #000000ae), url('../assets/images/espresso-pouring-from-coffee-machine-cafe.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  height: 80vh;
+}
+
+.stats-card {
+  h1 {
+    font-size: 50px;
+    color: #be9c79;
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  p {
+    color: $secondary;
+    font-size: 16px;
+  }
+}
+
+
+.cart-card {
+  .cart-image {
+    height: 260px;
+    min-height: 260px;
+    position: relative;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .cart-overlay {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.29);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      height: 100%;
+      transition: 0.5s;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    &:hover {
+      .cart-overlay {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.gallery-card {
+  position: relative;
+
+  .gallery-image {
+    height: 300px;
+    min-height: 300px;
+  }
+
+  .gallery-content {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #000000b5;
+    inset: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.5s;
+    cursor: pointer;
+    opacity: 0;
+
+    h4 {
+      font-size: 32px;
+      color: $white;
+    }
+
+    p {
+      font-size: 16px;
+      color: $white;
+    }
+  }
+
+  &:hover {
+    .gallery-content {
+      opacity: 1;
+    }
+  }
+}
+
+.contact-text button {
+  padding: 14px 36px;
+}
+
+.footer-section {
+  background: linear-gradient(#000000c0, #000000c0), url('../assets/images/cappuccino-sits-elegantly-atop-pile-rich-coffee-beans.jpg') center/cover no-repeat;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .about-content {
+    * {
+      color: $white;
+    }
+
+    li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: 0.3s;
+
+      &:hover {
+        .line {
+          width: 14px;
+        }
+      }
+    }
+
+    a {
+      font-size: 14px;
+    }
+
+    .line {
+      transition: 0.3s;
+      width: 0;
+      height: 1px;
+      background-color: $white;
+    }
+
+    ::placeholder {
+      color: $white;
+    }
+  }
+}
+
+.footer {
+  background-color: $light-black;
+  padding-block: 40px 30px;
+
+  * {
+    color: $white;
+  }
+
+  a {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: "Marcellus", serif;
+    letter-spacing: 1px;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.navbar {
+  background-color: $white;
+
+  .nav-link {
+    color: $black ;
+    font-size: 16px;
+    font-family: "Marcellus", serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-inline: 0 !important;
+    margin-right: 8px;
+    position: relative;
+    white-space: nowrap;
+
+    &::before {
+      content: '';
+      transition: 0.3s;
+      position: absolute;
+      bottom: 6px;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background-color: $black;
+    }
+  }
+
+  .nav-link.active {
+    color: $black;
+
+    &::before {
+      width: 60%;
+    }
+  }
+
+  .nav-link:hover {
+    &::before {
+      width: 60%;
+    }
+  }
+}
+
+.bg-dark {
+  background-color: $black !important;
+}
+
+
+// --------------------------------- Cart Section ------------------------------
+.cart-banner {
+  height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::before {
+    height: 100%;
+    width: 100%;
+    content: '';
+    background-color: rgba(0, 0, 0, 0.618);
+    position: absolute;
+    inset: 0;
+    margin: auto;
+  }
+
+  h2 {
+    font-size: 60px;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 500;
+  }
+}
+
+.auth-page {
+  background: url('../assets/brand-guide/ambulance.jpg') no-repeat;
+  background-position: left;
+  background-size: cover;
+  background-color: $white;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 40px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.cart-total {
+  .cart-list {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    padding-block: 20px;
+
+    span:first-child {
+      font-weight: 600;
+      // width: 25%;
+      min-width: 200px;
+    }
+
+  }
+  @media (max-width:575px) {
+    .cart-list {
+      span:first-child {
+        min-width: 100px;
+      }
+  
+    }
+  }
+}
+.cart-total-checkout {
+  .cart-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // border-bottom: 1px solid $border-color;
+    padding-block: 6px;
+
+    span:first-child {
+      font-weight: 600;
+      // width: 25%;
+      min-width: 200px;
+    }
+
+  }
+  @media (max-width:575px) {
+    .cart-list {
+      span:first-child {
+        min-width: 100px;
+      }
+  
+    }
+  }
+}
+
+.quantity-counter {
+  .counter-div {
+    height: 70px;
+    min-height: 70px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 400;
+    border: 1px solid $border-color;
+    border-right: none;
+  }
+
+  button {
+    height: 35px;
+    width: 35px;
+    border: 1px solid $border-color;
+  }
+}
+
+.preview-image {
+  // background-color: $white;
+  height: 500px;
+}
+
+.preview-image-list {
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  padding-bottom: 6px;
+  gap: 12px;
+
+  .list-image {
+    height: 160px;
+    cursor: pointer;
+    // width: 100px;
+    background-color: $border-color;
+  }
+}
+
+button {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-desc-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-banner {
+  height: 240px;
+  min-height: 240px;
+}
+
+.about-banner {
+  height: 400px;
+  min-height: 400px;
+}
+.about-banner-founder{
+  height: 400px;
+  min-height: 400px;
+}
+
+.story-section {
+  height: 300px;
+  border-radius: 8px;
+  img{
+    border-radius: 8px;
+  }
+}
+
+.about-testimonial-card {
+  * {
+    color: $white;
+    text-align: center;
+  }
+
+  .name {
+    font-family: "Marcellus", serif;
+  }
+}
+
+.ant-carousel .slick-dots li {
+  height: 12px !important;
+  width: 12px !important;
+  border-radius: 50% !important;
+  margin-inline: 6px !important;
+
+  button {
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: 50% !important;
+    border: 1px solid $white !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+  }
+}
+
+.ant-carousel .slick-dots li.slick-active {
+  button {
+    background-color: $white !important;
+  }
+}
+
+
+@media (max-width:575px) {
+  section {
+    padding-block: 50px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .sub-title {
+    font-size: 16px;
+  }
+
+  .fixed-banner-section {
+    height: 60vh;
+  }
+
+  .cart-banner {
+    height: 300px;
+
+    h2 {
+      font-size: 38px;
+    }
+  }
+
+  .about-banner {
+    height: 260px;
+    min-height: 260px;
+    border-radius: 8px;
+
+    img {
+      border-radius: 8px;
+    }
+  }
+
+  .preview-image {
+    height: 400px;
+  }
+}
+
+.full-width-image {
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.our-story-col-1 {
+  height: 450px;
+  border-radius: 12px;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    background-color: rgba(0, 0, 0, 0.54);
+    border-radius: 12px;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    z-index: 1;
+    margin: auto;
+  }
+
+  img {
+    border-radius: 12px;
+    position: absolute;
+    inset: 0;
+  }
+
+  .out-story-content-1 {
+    position: absolute;
+    padding: 20px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    * {
+      color: $white;
+    }
+  }
+}
+
+.out-story-content {
+  margin-top: 10px;
+
+  h4 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+
+.our-story-image {
+  border-radius: 12px;
+
+  img {
+    border-radius: 12px;
+  }
+}
+
+.cta-section {
+  background: linear-gradient(#000000b6, #000000b6), url('../assets/images/assortment-crispy-tartlet-with-filling.jpg') center/cover;
+  border-radius: 30px;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  * {
+    color: $white;
+  }
+  @media (max-width:575px) {
+    border-radius: 0;
+  }
+}
+.cart-img{
+  margin: auto;
+  height: 100px !important;
+  width: 100px !important;
+ img{
+height: 100% !important;
+width: 100% !important;
+  }
+}
+.text-justify{
+  text-align: justify;
+}
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjust the height as needed */
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(1.1); /* Adjust scale if you want to zoom in/out */
+  object-fit: cover; /* Ensures the image covers the container */
+  width: 100%;
+  height: 100%;
+}

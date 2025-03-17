@@ -1,0 +1,29 @@
+[
+    {
+        "name":"TUTORIAL"
+    },
+    {
+        "name":"OFFER_CREDIT"
+    },
+    {
+        "name":"REQUEST_OFFER"
+    },
+    {
+        "name":"MANAGE_CONTRACTS"
+    },
+    {
+        "name":"MANAGE_RECEIPT"
+    },
+    {
+        "name":"CREDIT_SCORE"
+    },
+    {
+        "name":"ALERTS_AND_ACTIVITY"
+    },
+    {
+        "name":"REPORT_A_DEBT"
+    },
+    {
+        "name":"AI_DISPUTE"
+    }
+]

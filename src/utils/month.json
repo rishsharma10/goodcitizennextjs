@@ -1,0 +1,101 @@
+[
+    {
+        "name": "1 month",
+        "value": "ONE_MONTH"
+    },
+    {
+        "name": "2 months",
+        "value": "TWO_MONTH"
+    },
+    {
+        "name": "3 months",
+        "value": "THREE_MONTH"
+    },
+    {
+        "name": "4 months",
+        "value": "FOUR_MONTH"
+    },
+    {
+        "name": "5 months",
+        "value": "FIVE_MONTH"
+    },
+    {
+        "name": "6 months",
+        "value": "SIX_MONTH"
+    },
+    {
+        "name": "7 months",
+        "value": "SEVEN_MONTH"
+    },
+    {
+        "name": "8 months",
+        "value": "EIGHT_MONTH"
+    },
+    {
+        "name": "9 months",
+        "value": "NINE_MONTH"
+    },
+    {
+        "name": "10 months",
+        "value": "TEN_MONTH"
+    },
+    {
+        "name": "11 months",
+        "value": "ELEVEN_MONTH"
+    },
+    {
+        "name": "12 months",
+        "value": "TWELVE_MONTH"
+    },
+    {
+        "name": "13 months",
+        "value": "THIRTEEN_MONTH"
+    },
+    {
+        "name": "14 months",
+        "value": "FOURTEEN_MONTH"
+    },
+    {
+        "name": "15 months",
+        "value": "FIFTEEN_MONTH"
+    },
+    {
+        "name": "16 months",
+        "value": "SIXTEEN_MONTH"
+    },
+    {
+        "name": "17 months",
+        "value": "SEVENTEEN_MONTH"
+    },
+    {
+        "name": "18 months",
+        "value": "EIGHTEEN_MONTH"
+    },
+    {
+        "name": "19 months",
+        "value": "NINETEEN_MONTH"
+    },
+    {
+        "name": "20 months",
+        "value": "TWENTY_MONTH"
+    },
+    {
+        "name": "21 months",
+        "value": "TWENTY_ONE_MONTH"
+    },
+    {
+        "name": "22 months",
+        "value": "TWENTY_TWO_MONTH"
+    },
+    {
+        "name": "23 months",
+        "value": "TWENTY_THREE_MONTH"
+    },
+    {
+        "name": "24 months",
+        "value": "TWENTY_FOUR_MONTH"
+    }
+]
+
+
+

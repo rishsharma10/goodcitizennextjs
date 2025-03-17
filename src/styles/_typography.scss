@@ -1,0 +1,56 @@
+.fs-16{
+    font-size: 16px !important;
+}
+.fs-14{
+    font-size: 14px !important;
+}
+.fs-12{
+    font-size: 12px !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.place-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-xs{
+    height: 22px !important;
+    width: 22px !important;
+    min-width: 22px !important;
+}
+
+label{
+    font-weight: 400;
+}
+*::placeholder, .ant-select-selection-placeholder{
+    font-weight: 400 !important;
+    font-size: 14px !important;
+}
+.text-dark{
+    color: $black !important;
+}
+
+.text-primary{
+    color: $primary !important;
+}
+
+.img-fluid{
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.white-icon{
+    svg path{
+        fill: $white;
+    }
+}
+.dep-icon:hover{
+        svg path{
+            fill: $white !important;
+        }
+}

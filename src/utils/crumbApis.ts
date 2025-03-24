@@ -5,7 +5,7 @@ const superagent = SuperagentPromise(_superagent, global.Promise);
 // export const API_ROOT = "https://copper-crumb.wloper.com/api/";
 // export const BUCKET_ROOT = "https://copper-crumb.wloper.com/public/storage/products/";
 
-export const API_ROOT = "https://admin.copperandcrumb.in/api/";
+export const API_ROOT = "http://localhost:3001/v1/";
 export const BUCKET_ROOT = "https://copper-crumb.wloper.com/public/storage/products/";
 
 
@@ -74,36 +74,12 @@ const requests = {
 };
 
 const Auth = {
-  login: (info: any) => requests.post("v1/login", info),
-  signUp: (info: any) => requests.post("v1/register", info),
-  validateCoupon: (info: any) => requests.post("v1/validate-coupon", info),
-  updateAddress: (info: any) => requests.put("v1/update-profile-address", info),
-  profile: () => requests.get(`v1/customer-details`),
-  logout: () => requests.put("user/logout", {}),
-  changePassword: (info: any) => requests.put("user/change/password", info),
-  forgotPassword: (value: any) => requests.put("user/forget/password", value),
-  resendOtp: (value: any) => requests.post("user/resend/email/otp", value),
-  resendOtpPhone: (value: any) => requests.put("user/resend/phone/otp", value),
-  verifyOtp: (info: any) => requests.post("user/otp/verify", info),
-  verifyEmail: (info: any) => requests.post("user/verify/email", info),
-  verifyPhone: (info: any) => requests.post("user/verify/phone", info),
-  customerContact: (info: any) => requests.post("v1/customer/contact", info),
-  newsletter: (info: any) => requests.post("v1/newsletter/subscribe", info),
+  login: (info: any) => requests.post("app/login", info),
+  signUp: (info: any) => requests.post("app/signup", info),
+  verifyOtp: (info: any) => requests.patch("app/verify/otp", info),
 };
-const Product = {
-  list: () => requests.get("v1/products"),
-  popular: () => requests.get("v1/popular-products"),
-  details: (id: any) => requests.get(`v1/product/${id}`),
-}
-const Category = {
-  list: () => requests.get("v1/categories"),
-  productList: (id: number) => requests.get(`v1/category-product/${id}`),
-}
-const Cart = {
-  list: () => requests.get("v1/cart"),
-  update: (info: any) => requests.post("v1/cart/add", info),
-  add: (info: any) => requests.post("v1/cart/add", info),
-  remove: (info: any) => requests.post("v1/cart/remove", info),
+const Driver = {
+  startRide: () => requests.get("driver/start-ride"),
 }
 
 const Common = {
@@ -155,9 +131,7 @@ const FILES = {
 
 const crumbApi = {
   Auth,
-  Product,
-  Cart,
-  Category,
+  Driver,
   API_ROOT,
   API_FILE_ROOT_DB_BACKUP,
   API_FILE_ROOT_SMALL,

@@ -121,7 +121,7 @@ const HeaderPage = () => {
                       }
                       size={40}
                     />
-                    {userInfo?.first_name}
+                    {`${userInfo?.email} (${userInfo?.role})`}
                   </Button>
                 </Dropdown> }
                         {/* </Link> */}

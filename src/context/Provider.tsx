@@ -226,8 +226,8 @@ function GlobalProvider(props: GlobleContextProviderProps) {
   const [cartData,setCartData] = useState({data:[],count:0})
   const initCart = async () => {
     try {
-      let apiRes = await crumbApi.Cart.list()
-      setCartData({data:apiRes.cart,count:apiRes?.cart?.length})
+      // let apiRes = await crumbApi.Cart.list()
+      // setCartData({data:apiRes.cart,count:apiRes?.cart?.length})
     } catch (error) {
       
     }
@@ -240,8 +240,8 @@ function GlobalProvider(props: GlobleContextProviderProps) {
 
   const getProfile = async () => {
     try {
-      const apiRes = await crumbApi.Auth.profile();
-      setUserInfo(apiRes?.data);
+      // const apiRes = await crumbApi.Auth.profile();
+      // setUserInfo(apiRes?.data);
     } catch (error: any) {}
   };
   console.log(router, "routerrrrrrr");

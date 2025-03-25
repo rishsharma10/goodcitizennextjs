@@ -1,7 +1,7 @@
 export default async function handler(req:any, res:any) {
     try {
       // const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${req.query.latitude}&lon=${req.query.longitude}`;
-      const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${req.query.latitude},${req.query.longitude}&key=${`AIzaSyD4MHXWLSqsVoZ7kIF3Bq1pVKMlUTO4HOU`}`;
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${req.query.latitude},${req.query.longitude}&key=${`AIzaSyBioMK31w2-759jRzfev6Tpkdj9pe2eKrw`}`;
       const data = await fetch(url)
       const result =await data.json()
       res.setHeader('Content-Type', 'application/json');

@@ -2,6 +2,7 @@ import { AntForm, Button, Col, Flex, FormItem, Input, InputPassword, Row, Typogr
 import { Form } from 'antd'
 import React, { Fragment, useContext, useState } from 'react'
 import Link from 'next/link'
+import logo from '@/assets/citizen/logo.jpg'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
@@ -23,14 +24,14 @@ const Welcome = () => {
                 </div>
                 <div className="p-4 w-100 h-100 bg-white">
                   <div className="logo text-center mb-5 text-uppercase fw-bold fs-14">
-                    <Link className='fs-14 fw-bold' href={'/'}>Good citizen</Link>
+                    <Link href={'/'}><img src={logo.src} alt='error' height={120} width={120} /></Link>
                   </div>
-                    <div className="submit-btn text-center mt-5">
-                      <Button htmlType='submit' onClick={() => router.push(`/login?role=DRIVER`)} type='default' block className='px-5'>Login as Driver</Button>
-                    </div>
-                    <div className="submit-btn text-center mt-5">
-                      <Button htmlType='submit' type='primary' onClick={() => router.push(`/login?role=USER`)} block className='px-5'>Login as User</Button>
-                    </div>
+                  <div className="submit-btn text-center mt-5">
+                    <Button htmlType='submit' size='large' onClick={() => router.push(`/login?role=DRIVER`)} type='default' block className='px-5'>Login as Driver</Button>
+                  </div>
+                  <div className="submit-btn text-center mt-4">
+                    <Button htmlType='submit' type='primary' size='large' onClick={() => router.push(`/login?role=USER`)} block className='px-5'>Login as User</Button>
+                  </div>
                 </div>
               </div>
             </Col>

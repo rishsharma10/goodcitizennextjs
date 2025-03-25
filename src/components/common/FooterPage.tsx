@@ -14,7 +14,7 @@ const FooterPage = () => {
     const handleSubmit = async (values: any) => {
         try {
             setLoading(true)
-            let apiRes = await crumbApi.Auth.newsletter(values)
+            // let apiRes = await crumbApi.Auth.newsletter(values)
             form.resetFields()
             Toast.success("Success! You're now subscribed to our newsletter.")
         } catch (error) {

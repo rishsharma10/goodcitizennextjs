@@ -15,7 +15,7 @@ import {
   TypographyTitle,
   Upload,
 } from "@/lib/AntRegistry";
-import React, { useContext, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { Carousel, Form, Grid } from "antd";
 import CrumbIcons from "@/components/CrumbIcons";
 import { ReactElement } from "react";
@@ -23,8 +23,9 @@ import CommonLayout from "@/components/common/CommonLayout";
 import crumbApi from "@/utils/crumbApis";
 // import video1 from "@/assets/videos/cori"
 import { stringReplace } from "@/utils/crumbValidation";
-import ProductCard from "@/components/ProductCard";
 import { GlobalContext } from "@/context/Provider";
+import AddressComponents from "@/components/AddressComponents";
+import AddressComponentsEnd from "@/components/AddressComponentEnd";
 const Home = () => {
 
   const [state, setState] = useState({ data: [], count: 0 })
@@ -86,186 +87,93 @@ const Home = () => {
   }, []);
   console.log(location, 'location')
   const [loading, setLoading] = useState(false)
+  const [is_start, setIs_start] = useState(false)
+  
+
+  const [pickup_location, setpickup_location] = useState({
+    latitude: 0,
+    longitude: 0,
+    full_address: ""
+  });
+  const [destination_location, setdestination_location] = useState({
+    latitude: 0,
+    longitude: 0,
+    full_address: ""
+  });
   const handleSubmit = async (values: any) => {
+    const payload = {
+      "pickup_location": {
+        "latitude": pickup_location?.latitude,
+        "longitude": pickup_location?.latitude,
+      },
+      "destination_location": {
+        "latitude": destination_location?.latitude,
+        "longitude": destination_location?.longitude,
+      }
+    }
     try {
+      setLoading(true)
+      const apiRes = await crumbApi.Driver.startRide(payload)
+      setIs_start(true)
       console.log(values, 'valuesss')
     } catch (error) {
-
+Toast.error(error)
+    } finally {
+      setLoading(false)
     }
+  }
+  const handleEnd = async () => {
+    setIs_start(false)
   }
   console.log(userInfo, 'userinfoooooo')
-
-  const [lat, setLat] = useState(0)
-  const [lng, setLng] = useState(0)
-  const [form] = Form.useForm()
-  const placeInputRef = React.useRef(null as any)
+  const [addPickup, setAddPickup] = useState(true)
 
 
-  function loadGoogleMapScript(callback: any) {
-    debugger
-    if (
-      typeof (window as any).google === "object" &&
-      typeof (window as any).google.maps === "object"
-    ) {
-      callback();
-    } else {
-      const googleMapScript = document.createElement("script");
-      googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD4MHXWLSqsVoZ7kIF3Bq1pVKMlUTO4HOU&libraries=places`;
-      window.document.body.appendChild(googleMapScript);
-      googleMapScript.addEventListener("load", callback);
-    }
-  }
-  const runTry = (cb: any) => {
-    loadGoogleMapScript(() => {
-      cb();
-    });
-  };
-  const initPlaceAPI = () => {
-    debugger
-    if (placeInputRef?.current) {
-      let autocomplete = new (window as any).google.maps.places.Autocomplete(
-        placeInputRef?.current?.input
-      );
-      autocomplete.addListener("place_changed", async () => {
-        let place = autocomplete.getPlace();
-        // console.log(place?.geometry);
-        if (!place.geometry) {
-          Toast.warning("Please enter a valid location");
-          return;
-        }
-        const address = place?.address_components;
-        const coordinate = place?.geometry?.location;
-
-        console.log(coordinate, "coordinate________");
-        console.log(coordinate?.lng(), "lng___________");
-        console.log(coordinate?.lat(), "lat______________");
-
-        let items: any = {};
-        if (Array.isArray(address) && address?.length > 0) {
-          let zipIndex = address.findIndex((res) =>
-            res.types.includes("postal_code")
-          );
-          let administrativeAreaIndex = address?.findIndex((res) =>
-            res?.types.includes("administrative_area_level_1", "political")
-          );
-          let localityIndex = address?.findIndex((res) =>
-            res?.types?.includes("locality", "political")
-          );
-          let countryIndex = address?.findIndex((res) =>
-            res?.types?.includes("country", "political")
-          );
-
-          if (zipIndex > -1) {
-            items.postal_code = address[zipIndex]?.long_name;
-          }
-          if (administrativeAreaIndex > -1) {
-            items.state = address[administrativeAreaIndex]?.long_name;
-          }
-          if (localityIndex > -1) {
-            items.city = address[localityIndex]?.long_name;
-          }
-          if (countryIndex > -1) {
-            items.country = address[countryIndex]?.long_name;
-          }
-          const heheheh = {
-            address: place.formatted_address,
-            country: items?.country,
-            state: items?.state,
-            city: items?.city,
-            postal_code: items?.postal_code,
-          } as any;
-          const errors = form.getFieldsError();
-          if (errors.length) {
-            form?.setFields(
-              errors.flatMap((res: any) => {
-                if (!(res.name[0] in heheheh)) return [];
-                console.log(
-                  !!heheheh[res.name[0]],
-                  heheheh[res.name[0]],
-                  heheheh,
-                  res.name
-                );
-                return {
-                  name: res.name,
-                  errors: !!heheheh[res.name[0]]
-                    ? []
-                    : [
-                      `Please enter ` +
-                      res.name[0].toString().replace("_", " "),
-                    ],
-                };
-              })
-            );
-          }
-          console.log(items);
-
-          form?.setFieldValue("house_no", place.formatted_address);
-          form?.setFieldValue("country", items?.country);
-          form?.setFieldValue("state", items?.state);
-          form?.setFieldValue("city", items?.city);
-          form?.setFieldValue("pin_code", items?.postal_code);
-          // form?.setFieldValue("lat", coordinate?.lat());
-          // form?.setFieldValue("lng", coordinate?.lng());
-        }
-
-        if (!coordinate?.lat() || !coordinate?.lng()) {
-          Toast.warning("Please select a valid location from the autocomplete");
-        } else {
-          form?.setFieldValue("lat", coordinate?.lat());
-          form?.setFieldValue("lng", coordinate?.lng());
-        }
-      });
-    }
-  };
-
-  React.useEffect(() => {
-    runTry(() => {
-      setTimeout(() => {
-        initPlaceAPI();
-      }, 0);
-    });
-  }, []);
 
   return (
     <section className="container mt-2">
-      <Col span={24} lg={12} xl={12} xxl={12}>
-        <div className="contact-form">
-          <div className="mb-5">
-            <h3 className="fs-16">Address : <span className="text-danger">{userInfo?.home_address}</span></h3>
-            <h4 className="fs-16">Current lat: <span className="text-danger">{userInfo?.home_lat}</span></h4>
-            <h4 className="fs-16">Current lng: <span className="text-danger">{userInfo?.home_lng}</span></h4>
-          </div>
-          <AntForm size='large' onFinish={handleSubmit}>
-            <Row gutter={[20, 8]}>
-            <Col span={24} >
-                <FormItem name='street_address'>
-                  {/* <Input onFocus={(e) => e.target.select()} name='address' ref={(ref: any) => placeInputRef.current = ref} placeholder='Address' /> */}
-                  <Input
-          className="custom-input"
-          name="address"
-          ref={(ref:any) => (placeInputRef.current = ref)}
-          id="Address"
-          placeholder="Enter your address"
-        />
-                </FormItem>
-              </Col>
-              {/* <Col span={24}>
-                    <FormItem name={`end_point`} rules={[{ message: 'Please enter end point', required: true }]}>
-                      <Input placeholder='End point' />
-                    </FormItem>
-                  </Col> */}
-              <Col span={24} >
-                <FormItem name='street_address1'>
-                  <Input onFocus={(e) => e.target.select()} name='address' ref={(ref: any) => placeInputRef.current = ref} placeholder='Address' />
-                </FormItem>
-              </Col>
-              <Col span={24}>
-                <Button loading={loading} block htmlType='submit' type='primary' className='px-5'>Start</Button>
-              </Col>
-            </Row>
-          </AntForm>
-        </div>
-      </Col>
+      {userInfo?.role == "USER" ?
+        <Fragment>
+          <TypographyTitle level={3}>Welcome back!</TypographyTitle>
+        </Fragment>
+        : <Fragment>
+
+          {is_start ? <Col span={24} lg={12} xl={12} xxl={12}>
+            <div className="contact-form">
+              <div className="mb-5">
+                <h4 className="fs-16">Pickup: <span className="text-danger">{pickup_location?.full_address}</span></h4>
+                <h4 className="fs-16">Destination: <span className="text-danger">{destination_location?.full_address}</span></h4>
+              </div>
+              <Button block onClick={handleEnd} loading={loading} type="primary">End</Button>
+
+            </div>
+          </Col> :
+            <Col span={24} lg={12} xl={12} xxl={12}>
+              <div className="contact-form">
+                <div className="mb-5">
+                  <h3 className="fs-16">Address : <span className="text-danger">{userInfo?.home_address}</span></h3>
+                  <h4 className="fs-16">Current lat: <span className="text-danger">{userInfo?.home_lat}</span></h4>
+                  <h4 className="fs-16">Current lng: <span className="text-danger">{userInfo?.home_lng}</span></h4>
+                </div>
+                <div role="button" className="shadow p-2 rounded text-center" onClick={() => setAddPickup(true)} >
+                  <TypographyTitle level={5}>Enter pickup </TypographyTitle>
+                </div>
+                {pickup_location?.full_address ? <TypographyText className="mt-5">{pickup_location?.full_address}</TypographyText>:""}
+                <div role="button" className="shadow p-2 rounded mt-4 text-center" onClick={() => setAddPickup(false)}>
+                  <TypographyTitle level={5}>Enter destination </TypographyTitle>
+                </div>
+                {destination_location?.full_address ? <TypographyText className="mt-3">{destination_location?.full_address}</TypographyText>:""}
+                <div className="mt-5">
+
+                {addPickup ? <AddressComponents name="start_point" placeholder="Enter pickup location" type="START" setState={setpickup_location} state={pickup_location} value={pickup_location?.full_address} />:
+                <AddressComponentsEnd name="end_point" placeholder="Enter destination location" type="END" setState={setdestination_location} state={destination_location} value={destination_location?.full_address} />}
+                </div>
+
+                <Button block onClick={handleSubmit} loading={loading} type="primary">Start</Button>
+
+              </div>
+            </Col>}
+        </Fragment>}
 
     </section>
   );

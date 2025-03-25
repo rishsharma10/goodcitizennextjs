@@ -1,7 +1,7 @@
 import { AntForm, Button, Col, Flex, FormItem, Input, InputPassword, Row, TypographyText } from '@/lib/AntRegistry'
 import { Form } from 'antd'
 import React, { Fragment, useContext, useState } from 'react'
-import logo from '@/assets/brand-guide/logo.png'
+import logo from '@/assets/citizen/logo.jpg'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import crumbApi from '@/utils/crumbApis'
@@ -20,7 +20,7 @@ const SignupPage = () => {
         console.log(values, 'valuesssss');
         const payload = {
             email: values.email,
-            role: "USER",
+            role: String(router.query.role ?? "USER"),
             password: values.password,
             device_type: "WEB",
         } as any
@@ -45,7 +45,7 @@ const SignupPage = () => {
            const otpRes = await crumbApi.Auth.verifyOtp({otp:"123456",fcm_token:token,device_type:"WEB"})
             // const apiResUser = await crumbApi.Auth.profile();
             setUserInfo({
-                ...otpRes?.data,
+                ...otpRes?.data
               });
             setCookie(this, COOKIES_USER_COPPER_CRUMB_ACCESS_TOKEN, otpRes?.data?.access_token, {
                 path: "/",
@@ -73,7 +73,7 @@ const SignupPage = () => {
                                 </div>
                                 <div className="p-4 w-100 h-100 bg-white">
                                     <div className="logo text-center mb-5 text-uppercase fw-bold fs-14">
-                                        <Link href={'/'}>Good citizen</Link>
+                                        <Link href={'/'}><img src={logo.src} alt='error' height={120}  width={120}/></Link>
                                     </div>
                                     <Form layout='vertical' size='large' onFinish={handleSubmit}>
                                         {/* <FormItem name='first_name' rules={[{ required: true, pattern: /^[a-zA-Z\s]+$/, message: "Please enter first name" }]} label={'First Name'}>

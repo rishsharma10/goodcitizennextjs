@@ -79,7 +79,7 @@ const Auth = {
   verifyOtp: (info: any) => requests.patch("app/verify/otp", info),
 };
 const Driver = {
-  startRide: () => requests.get("driver/start-ride"),
+  startRide: (info:any) => requests.post("driver/start-ride",info),
 }
 
 const Common = {

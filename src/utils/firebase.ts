@@ -3,14 +3,14 @@ import { getAnalytics } from "firebase/analytics";
 import { getMessaging, getToken, isSupported, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBMO0jYTKNlkYisZDzFCcjdgZl7dakgnZ4",
-    authDomain: "goodcitizenwebdemo.firebaseapp.com",
-    projectId: "goodcitizenwebdemo",
-    storageBucket: "goodcitizenwebdemo.firebasestorage.app",
-    messagingSenderId: "485129384065",
-    appId: "1:485129384065:web:ab5710fe91ac1dff6edd80",
-    measurementId: "G-3EHFJ9DR5R"
-  };
+  apiKey: "AIzaSyAJB89IbILQu7pD4YWmwGKNaul121wOKBI",
+  authDomain: "good--citizen.firebaseapp.com",
+  projectId: "good--citizen",
+  storageBucket: "good--citizen.firebasestorage.app",
+  messagingSenderId: "590150775885",
+  appId: "1:590150775885:web:f068191134a27467911804",
+  measurementId: "G-XS0JSZ2P99"
+};
 
 let app: any;
 if (typeof window !== "undefined") {
@@ -25,7 +25,7 @@ export const getFirebaseMessageToken = async () => {
     const messaging = getMessaging(app);
     try {
       let tokenId = await getToken(messaging, {
-        vapidKey: `BKOHMWz4Wj9-vJ338k26CQZ9syw2q9UEVxjy_Do0x0k2tGvHEZmOJUUFsZfY-c53KJLkeiFEbiDIfv7E6TEd3js`,
+        vapidKey: `BJQFl756KDDQOf00sOrjCSstf0q1EszeuH3MTpoUizkRANM4Bzf4dZBrsQ5H0Fcq-5L5WkaNxpkgH3Yz2ppT1_k`,
       });
       return { tokenId };
     } catch (error) {

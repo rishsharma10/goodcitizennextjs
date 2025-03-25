@@ -3,14 +3,14 @@ importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js")
 
 // Initialize the Firebase app in the service worker by passing the generated config
 const firebaseConfig = {
-    apiKey: "AIzaSyBMO0jYTKNlkYisZDzFCcjdgZl7dakgnZ4",
-    authDomain: "goodcitizenwebdemo.firebaseapp.com",
-    projectId: "goodcitizenwebdemo",
-    storageBucket: "goodcitizenwebdemo.firebasestorage.app",
-    messagingSenderId: "485129384065",
-    appId: "1:485129384065:web:ab5710fe91ac1dff6edd80",
-    measurementId: "G-3EHFJ9DR5R"
-  };
+  apiKey: "AIzaSyAJB89IbILQu7pD4YWmwGKNaul121wOKBI",
+  authDomain: "good--citizen.firebaseapp.com",
+  projectId: "good--citizen",
+  storageBucket: "good--citizen.firebasestorage.app",
+  messagingSenderId: "590150775885",
+  appId: "1:590150775885:web:f068191134a27467911804",
+  measurementId: "G-XS0JSZ2P99"
+};
 
 firebase.initializeApp(firebaseConfig)
 const messaging = firebase.messaging()

@@ -1,7 +1,7 @@
 import { AntForm, Button, Col, Flex, FormItem, Input, InputPassword, Row, TypographyText } from '@/lib/AntRegistry'
 import { Form } from 'antd'
 import React, { Fragment, useContext, useState } from 'react'
-import logo from '@/assets/brand-guide/logo.png'
+import logo from '@/assets/citizen/logo.jpg'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import crumbApi from '@/utils/crumbApis'
@@ -23,58 +23,41 @@ const LoginPage = () => {
   const { Toast, setUserInfo, initCart, cartData, requestNotification } = useContext(GlobalContext)
   const [loading, setLoading] = useState(false)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const handleSubmit = async (values: any) => {
     debugger
     console.log(values, 'valuesssss');
     const payload = {
-        email: values.email,
-        role: String(router.query.role ?? "USER"),
-        password: values.password,
-        device_type: "WEB",
+      email: values.email,
+      role: String(router.query.role ?? "USER"),
+      password: values.password,
+      device_type: "WEB",
     } as any
     if (!navigator.geolocation) {
-        return;
+      return;
     }
 
     navigator.geolocation.getCurrentPosition(
-        (position) => {
-            payload.lat = String(position.coords.latitude),
-                payload.long = String(position.coords.longitude)
-        },
-        (error) => {
-            alert(error.message);
-        }
+      (position) => {
+        payload.lat = String(position.coords.latitude),
+          payload.long = String(position.coords.longitude)
+      },
+      (error) => {
+        alert(error.message);
+      }
     );
     try {
-        setLoading(true)
-        const token = await requestNotification()
-        const apiRes = await crumbApi.Auth.login({ ...payload, fcm_token: token });
-        crumbApi.setToken(apiRes?.data?.access_token)
-      
+      setLoading(true)
+      const token = await requestNotification()
+      const apiRes = await crumbApi.Auth.login({ ...payload, fcm_token: token });
+      crumbApi.setToken(apiRes?.data?.access_token)
+
       setUserInfo({
         ...apiRes?.data,
       });
       setCookie(this, COOKIES_USER_COPPER_CRUMB_ACCESS_TOKEN, apiRes?.data?.access_token, {
         path: "/",
       });
-        router.replace(`/`)
+      router.replace(`/`)
     } catch (error: any) {
       Toast.error(error.message)
       setLoading(false)
@@ -97,7 +80,7 @@ const LoginPage = () => {
                 </div>
                 <div className="p-4 w-100 h-100 bg-white">
                   <div className="logo text-center mb-5 text-uppercase fw-bold fs-14">
-                    <Link href={'/'}>Good citizen</Link>
+                    <Link href={'/'}><img src={logo.src} alt='error' height={120} width={120} /></Link>
                   </div>
                   <Form layout='vertical' size='large' onFinish={handleSubmit}>
                     <FormItem name={`email`} label={'Email'} rules={[

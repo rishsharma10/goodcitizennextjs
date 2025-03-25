@@ -17,28 +17,6 @@ const HeaderPage = () => {
 
     const items: MenuProps["items"] = [
         {
-          key: "2",
-          label: (
-            <Button
-              type="text"
-              onClick={() => router.push(`https://copper-crumb.wloper.com/customer/dashboard`)}
-              size="small"
-              className="p-0 fw-medium bg-transparent rounded-0 h-100"
-            >
-            PROFILE
-            </Button>
-          ),
-        },
-        {type:"divider"},
-        // {
-        //   key: "1",
-        //   label: (
-        //     <Link href={`/address`} className="fw-medium">
-        //       Address
-        //     </Link>
-        //   ),
-        // },
-        {
           key: "3",
           label: (
             <Button

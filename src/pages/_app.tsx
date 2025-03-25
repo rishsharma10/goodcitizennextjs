@@ -7,11 +7,10 @@ import type { AppProps } from "next/app";
 import NProgress from 'nprogress';
 import Head from "next/head";
 import { parseCookies } from "nookies";
-import logo from "@/assets/brand-guide/logo.png"
+import logo from "@/assets/citizen/logo.jpg"
 import { Router } from 'next/router';
 import { Fragment, ReactElement, ReactNode } from "react";
 import Script from "next/script";
-import ScrollToTop from "@/components/ScrollToTop";
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement,) => ReactNode
 }
@@ -58,7 +57,7 @@ const MyApp = ({ Component, pageProps, ...props }: AppPropsWithLayout) => {
                 `}
     </Script>
     <Script async src="https://www.googletagmanager.com/gtag/js?id=G-FVXPLF125R"></Script>
-      {getLayout(<><Component {...pageProps} /><ScrollToTop/></>)}
+      {getLayout(<><Component {...pageProps} /></>)}
     </GlobalProvider >
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -71,9 +70,9 @@ MyApp.getInitialProps = async (context: any) => {
   try {
     if (accessToken) {
       crumbApi.setToken(accessToken)
-      let apiRes = await crumbApi.Auth.profile()
-      const user_info = { ...apiRes.customer }
-      return { user_info: { ...user_info, access_token: accessToken } }
+      // let apiRes = await crumbApi.Auth.profile()
+      // const user_info = { ...apiRes.customer }
+      // return { user_info: { ...user_info, access_token: accessToken } }
     }
     return { user_info: {access_token: accessToken } }
 

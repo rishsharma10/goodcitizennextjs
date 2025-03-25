@@ -220,7 +220,7 @@ function GlobalProvider(props: GlobleContextProviderProps) {
       maxAge: 0,
       path: `/`,
     });
-    router.replace(`/login`);
+    router.replace(`/welcome`);
   };
 
   const [cartData,setCartData] = useState({data:[],count:0})
